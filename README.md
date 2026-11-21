@@ -1,4 +1,25 @@
+name: Dependency Submission
 
+on:
+  push:
+    branches: ['main']
+
+permissions:
+  contents: write
+
+jobs:
+  dependency-submission:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v6
+    - name: Setup Java
+      uses: actions/setup-java@v5
+      with:
+        distribution: 'temurin'
+        java-version: 17
+    - name: Generate and submit dependency graph
+      uses: gradle/actions/dependency-submission@v6
 
 =======
 # ⌨️ TyplOf — Professional Typing Trainer
